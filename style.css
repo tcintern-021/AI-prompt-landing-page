@@ -1,0 +1,296 @@
+/* Universal Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Body Styles (Centered Layout) */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f3f4f6; /* Soft light gray background */
+  color: #1f2937;            /* Dark charcoal text for high readability */
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Main Container to limit maximum width on large screens */
+.playground-container {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Header Section */
+.playground-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.playground-header .logo-icon {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.playground-header h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #4f46e5; /* Primary indigo color */
+  margin-bottom: 5px;
+}
+
+.playground-header p {
+  color: #4b5563; /* Medium gray */
+  font-size: 1rem;
+}
+
+/* Grid Layout (Side-by-side on desktop, stacked on mobile) */
+.playground-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .playground-body {
+    grid-template-columns: 1fr; /* Stacked columns on mobile screens */
+  }
+}
+
+/* Card Styling (Both Input and Output sections) */
+.card {
+  background-color: #ffffff; /* Pure white background */
+  border: 1px solid #e5e7eb; /* Soft border */
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Soft, subtle shadow */
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid #f3f4f6;
+  padding-bottom: 10px;
+}
+
+.card-header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.badge {
+  background-color: #e0e7ff; /* Soft indigo background badge */
+  color: #4338ca;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Form Styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+textarea {
+  background-color: #f9fafb; /* Light tint for input boxes */
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  color: #1f2937;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus {
+  border-color: #6366f1; /* Highlights primary color on focus */
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  background-color: #ffffff; /* Shifts to white background when typing */
+}
+
+/* Error/Validation styling */
+.error-message {
+  color: #dc2626; /* Warning red text */
+  font-size: 0.8rem;
+  display: none;
+}
+
+textarea.invalid {
+  border-color: #f87171;
+  background-color: #fef2f2; /* Light red tint indicating error */
+}
+
+/* Button Layout & Styling */
+.action-bar {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease; /* Smooth hover transition */
+}
+
+/* Click animation for interactive buttons */
+.btn:active {
+  transform: scale(0.97); /* Shrinks slightly when clicked */
+}
+
+/* Primary Button (Indigo "Run Prompt") */
+.btn-primary {
+  background-color: #4f46e5;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: #4338ca; /* Darker indigo on hover */
+  box-shadow: 0 4px 6px rgba(79, 70, 229, 0.3);
+}
+
+/* Secondary Button (Bordered "Clear") */
+.btn-secondary {
+  background-color: #ffffff;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+}
+
+.btn-secondary:hover {
+  background-color: #f9fafb; /* Soft gray highlight on hover */
+  border-color: #9ca3af;
+  color: #1f2937;
+}
+
+/* Text Button (Plain "Clear History") */
+.btn-text {
+  background: none;
+  border: 1px solid  #9ca3af;
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-text:hover {
+  color: #ef4444; /* Turns warning red on hover */
+  text-decoration: underline;
+}
+
+/* Terminal Window Mockup */
+.terminal-window {
+  background-color: #f9fafb; /* Light terminal canvas */
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+}
+
+.terminal-header {
+  background-color: #f3f4f6;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.terminal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.terminal-dot.red { background-color: #f87171; }
+.terminal-dot.yellow { background-color: #fbbf24; }
+.terminal-dot.green { background-color: #34d399; }
+
+.terminal-title {
+  margin-left: 5px;
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-family: 'Fira Code', monospace;
+}
+
+.terminal-body {
+  padding: 12px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  overflow-y: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.empty-state {
+  margin: auto;
+  text-align: center;
+  color: #9ca3af;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Interactive Prompt Run Logs */
+.prompt-log {
+  border-left: 3px solid #4f46e5;
+  background-color: #e0e7ff; /* Very soft light blue/indigo tint */
+  padding: 10px;
+  border-radius: 0 4px 4px 0;
+}
+
+.log-meta {
+  font-size: 0.7rem;
+  color: #6b7280;
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.log-content {
+  white-space: pre-wrap;
+  color: #1f2937;
+}
+
+/* Global Display Utility Class */
+.hidden {
+  display: none !important;
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
