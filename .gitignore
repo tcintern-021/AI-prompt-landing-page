@@ -24,3 +24,7 @@ Thumbs.db
 
 # Agents
 .agents/
+
+# Environment variables
+.env
+
